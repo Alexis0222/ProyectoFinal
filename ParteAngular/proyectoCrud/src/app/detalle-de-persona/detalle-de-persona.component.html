@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-grid-list cols="2">
+ <div class="header">
+  <h1>Perfil</h1>
+  {{persona.perfil}}
+ </div>
+ <div>
+  <div class="myDiv">
+<h1>Acerca del usuario
+</h1>
+  {{persona.acerca_de_mi}}
+  <div class="puntajes">
+  <button (click)="aumentarlikes(puntaje)" class="button">
+    Like {{puntaje.likes}}
+
+   </button>
+   <button (click)="aumentardislikes(puntaje)" class="button2">
+    dislike
+    {{puntaje.dislikes}}
+   </button>
+
+  </div>
+  </div>
+  <div class="divimagen">
+    <img *ngIf="fotoSeleccionada"   [src]="resolverFoto(fotoSeleccionada)"
+      alt="">
+</div>
+<div class="datos">
+<h1>Detalles</h1>
+
+ <h1>Nombre:</h1>
+
+  {{persona.nombre}}
+  <br> <br>
+  <h1>Edad:</h1>
+
+  {{persona.edad}}
+  <br> <br>
+ <h1>Ubicacion:</h1>
+ {{persona.ubicacion}}
+
+  <mat-chip-list *ngIf="existe">
+      <mat-chip color="warn" selected>
+
+      </mat-chip>
+  </mat-chip-list>
+</div>
+</div>
+</mat-grid-list>
+</mat-card>

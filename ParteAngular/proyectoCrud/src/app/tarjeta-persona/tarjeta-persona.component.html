@@ -1,0 +1,17 @@
+<mat-card class="contenedor-usuario">
+  <div>
+      <div class="contenedor-imagen">
+      <img src="{{resolverRuta()}}" alt=""/>
+      </div>
+        <div  class="perfil" >
+        <h1>Nombre:</h1>
+          <h2>{{persona.nombre}}</h2>
+
+          <button (click)="detalles()" mat-stroked-button color="warn">
+            <a>Ver detalles</a>
+
+            <mat-icon>arrow_right</mat-icon>
+          </button>
+        </div>
+  </div>
+</mat-card>

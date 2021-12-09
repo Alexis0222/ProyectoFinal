@@ -1,0 +1,35 @@
+<h1>Lista de Personas</h1>
+<button (click)="navegarAFormulario()" mat-button color='accent' mat-raised-button>
+  Agregar personas
+</button>
+<table class="mat-elevation-z13" *ngIf="personas.length>0" mat-table [dataSource]="personas">
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.nombre}}</mat-cell>
+  </ng-container>
+<ng-container matColumnDef="edad">
+  <mat-header-cell *matHeaderCellDef>edad</mat-header-cell>
+  <mat-cell *matCellDef="let element">{{element.edad}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="ubicacion">
+    <mat-header-cell *matHeaderCellDef>ubicacion</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.ubicacion }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="eliminar">
+    <mat-header-cell *matHeaderCellDef>eliminar</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button (click)="eliminar(element)" mat-icon-button color="primary">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container> <ng-container matColumnDef="editar">
+    <mat-header-cell *matHeaderCellDef>editar</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button (click)="editar(element)" mat-icon-button color="primary">
+        <mat-icon>editar</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+<mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
+<mat-row *matRowDef="let row;columns:columnas"></mat-row>
+</table>

@@ -1,0 +1,39 @@
+<div class="contenedor-padre">
+
+
+  <mat-toolbar class="barra" color="primary">
+    <mat-toolbar-row>
+      <button (click)="cajon.toggle()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>
+       pagina proyecto
+      </span>
+      <span class="example-fill-remaining-space"></span>
+      <mat-menu #menu="matMenu">
+
+      </mat-menu>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container class="contenido">
+    <mat-sidenav style="min-width: 300px;" #cajon opened mode="side">
+      <mat-nav-list>
+        <p style="margin-left: 4px;">Agregar mas usuarios</p>
+        <a mat-list-item routerLink="/personas">
+          <mat-icon color="primary">list_alt</mat-icon>
+        <p>personas</p>
+        </a>
+        <mat-divider></mat-divider>
+        <p style="margin-left: 4px;">Listado de personas</p>
+        <a mat-list-item routerLink="/tienda">
+          <mat-icon color="primary">store</mat-icon>
+         <p>usuarios</p>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="padding-10">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,35 @@
+.mat-card {
+
+  margin-bottom: 10px !important;
+
+}
+
+
+
+img {
+
+  width:300px;
+  height:300px;
+  border-radius:150px;
+}
+
+.contenedor-imagen{
+
+  padding: 10px;
+
+  display: inline-block;
+
+}
+.contenedor-usuario{
+  background-color:#2D2D2D;
+  color: white;
+}
+a{
+color: cadetblue;
+}
+.perfil{
+  display: inline-block;
+  width: 300px;
+
+  text-align: top;
+}

@@ -1,0 +1,51 @@
+<mat-card>
+
+  <h1>Agregar Persona</h1>
+
+  <p>
+      <mat-form-field>
+          <input matInput [(ngModel)]="personaModel.nombre" type="text"
+          placeholder="Escriba nombre">
+      </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+        <input matInput [(ngModel)]="personaModel.edad" type="number"
+        placeholder="Escriba edad">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+        <textarea row="10" matInput [(ngModel)]="personaModel.ubicacion"
+        placeholder="Escriba ubicacion"></textarea>
+    </mat-form-field>
+</p>
+<p>
+  <mat-form-field>
+      <textarea row="10" matInput [(ngModel)]="personaModel.acerca_de_mi"
+      placeholder="Escriba algo sobre usted"></textarea>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field>
+      <textarea row="10" matInput [(ngModel)]="personaModel.perfil"
+      placeholder="Escriba su especialidad"></textarea>
+  </mat-form-field>
+</p>
+<label for="fotos">Fotos</label>
+
+  <br>
+  <input accept="image/png,image/jpeg" #foto required id="fotos" multiple type="file">
+
+  <p>
+      <!-- Boton de guardar -->
+      <app-loading-button [cargando]="imagenconfirmacion"
+      texto="Guardar" (click)="guardar()"></app-loading-button>
+      <a routerLink="/personas" mat-raised-button color="primary" style="margin-left: 10px;">
+      Volver
+      </a>
+  </p>
+
+</mat-card>

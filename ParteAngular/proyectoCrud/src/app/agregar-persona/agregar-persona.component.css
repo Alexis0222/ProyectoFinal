@@ -1,0 +1,6 @@
+input [type="file"]{
+  margin: 10px 0;
+}
+mat-card{
+  background-color:cadetblue;
+}

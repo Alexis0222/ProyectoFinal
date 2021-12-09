@@ -54,9 +54,12 @@ export class EditarPersonasComponent implements OnInit {
       return alert("Algo que mencionar en su perfil");
     }
     let archivos = this.foto!.nativeElement.files;
-    if (!archivos.length || !this.personaModel.fotos[0].foto) {
+    if ((!this.personaModel.fotos[0].foto)) {
       return alert("Selecciona al menos una foto");
+    }    if(archivos[0].name == this.personaModel.fotos[0].foto){
+      return alert("misma imagen no se realizara la modificacon");
     }
+
     this.fotoModel.foto=archivos[0].name;
 
       this.personaService.guardarEdicionPersona(this.personaModel);

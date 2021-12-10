@@ -53,11 +53,8 @@ console.log(archivos[0]);
  const fd = new FormData();
 
    for (let x = 0; x < archivos.length; x++) {
-     // fd.append de base que venia para agregar las fotos
      fd.append(`foto_${x}`, archivos[x])
-    //fd.append por el cual lo unico que logra llegar al express es el nombre
-    //de la imagen
-     // fd.append(`foto${x}`,this.fotoModel.foto)
+
     }
     fd.append("id_persona", idPersonaGuardada);
     const respuesta = await this.personaService.agregarFotosDePersona(fd);

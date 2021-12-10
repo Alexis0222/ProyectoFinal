@@ -51,13 +51,16 @@ private  personaService:PersonasService,private snackbar:MatSnackBar
 this.fotoModel.foto=archivos[0].name;
 console.log(archivos[0]);
 this.fotoModel.id_persona=idPersonaGuardada;
+//metodo donde dependemos de que la imagen este de una vez en la carpeta de fotos_personas
 const respuesta= this.personaService.agregarFotosDepersona(this.fotoModel);
   /* const fd = new FormData();
 
    for (let x = 0; x < archivos.length; x++) {
-     // fd.append(`foto_${x}`, archivos[x])
-
-      fd.append(`foto${x}`,this.fotoModel.foto)
+     // fd.append de base que venia para agregar las fotos
+     fd.append(`foto_${x}`, archivos[x])
+    //fd.append por el cual lo unico que logra llegar al express es el nombre
+    //de la imagen
+     // fd.append(`foto${x}`,this.fotoModel.foto)
     }
     fd.append("id_persona", idPersonaGuardada);
     const respuesta = await this.personaService.agregarFotosDePersona(fd);

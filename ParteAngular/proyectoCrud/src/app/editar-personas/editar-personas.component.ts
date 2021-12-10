@@ -35,6 +35,7 @@ export class EditarPersonasComponent implements OnInit {
    console.log(this.personaModel.fotos[0].foto)
    this.fotoModel=this.personaModel.fotos[0];
    console.log(this.fotoModel);
+   console.log(this.personaModel.id_personas);
   }
 
   async guardar(){
@@ -53,18 +54,24 @@ export class EditarPersonasComponent implements OnInit {
     if (!this.personaModel.perfil) {
       return alert("Algo que mencionar en su perfil");
     }
-    let archivos = this.foto!.nativeElement.files;
-    if ((!this.personaModel.fotos[0].foto)) {
-      return alert("Selecciona al menos una foto");
-    }    if(archivos[0].name == this.personaModel.fotos[0].foto){
-      return alert("misma imagen no se realizara la modificacon");
-    }
-
-    this.fotoModel.foto=archivos[0].name;
-
       this.personaService.guardarEdicionPersona(this.personaModel);
+      let archivos = this.foto!.nativeElement.files;
+      if(!archivos.length){
 
-    this.personaService.guardarEdicionFoto(this.fotoModel);
+      }else{
+        if(archivos[0].name == this.personaModel.fotos[0].foto){
+          return alert("misma imagen no se realizara la modificacion");
+        }else{
+      const fd = new FormData();
+
+      for (let x = 0; x < archivos.length; x++) {
+        fd.append(`foto_${x}`, archivos[x])
+       }
+       fd.append("id_persona", this.personaModel.id_personas);
+       console.log(fd);
+       const respuesta = await this.personaService.editarFotoDePersonas(fd);
+      }
+      }
     this.snackbar.open("Persona Editada", "", {
       duration: 1500,
       horizontalPosition: "start",

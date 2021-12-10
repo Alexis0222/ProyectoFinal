@@ -10,7 +10,7 @@ import { Foto } from '../foto';
 })
 export class AgregarPersonaComponent implements OnInit {
 personaModel= new Persona(0,"",0,"","","");
-fotoModel= new Foto("",0);
+
 
 
 @ViewChild("foto", {
@@ -48,12 +48,9 @@ private  personaService:PersonasService,private snackbar:MatSnackBar
     this.imagenconfirmacion = true;
     const idPersonaGuardada = await this.personaService.agregarPersona(this.personaModel);
     console.log(archivos[0].name);
-this.fotoModel.foto=archivos[0].name;
 console.log(archivos[0]);
-this.fotoModel.id_persona=idPersonaGuardada;
-//metodo donde dependemos de que la imagen este de una vez en la carpeta de fotos_personas
-const respuesta= this.personaService.agregarFotosDepersona(this.fotoModel);
-  /* const fd = new FormData();
+
+ const fd = new FormData();
 
    for (let x = 0; x < archivos.length; x++) {
      // fd.append de base que venia para agregar las fotos
@@ -64,7 +61,7 @@ const respuesta= this.personaService.agregarFotosDepersona(this.fotoModel);
     }
     fd.append("id_persona", idPersonaGuardada);
     const respuesta = await this.personaService.agregarFotosDePersona(fd);
-*/
+
     this.snackbar.open("persona guardado", "", {
       duration: 1500,
       horizontalPosition: "start",
@@ -73,7 +70,7 @@ const respuesta= this.personaService.agregarFotosDepersona(this.fotoModel);
 
     this.imagenconfirmacion = false;
     this.personaModel= new Persona(0,"",0,"","","");
-    this.fotoModel=new Foto("",0);
+
     this.foto!.nativeElement.value = "";
   }
 }

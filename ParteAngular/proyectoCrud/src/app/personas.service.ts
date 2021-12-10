@@ -22,9 +22,6 @@ export class PersonasService {
   public async agregarFotosDePersona(fotos:FormData){
     return await this.http.formdata("/fotos_persona",fotos);
 
-  }  public async agregarFotosDepersona(foto:Foto){
-    return await this.http.post("/fotopersona",foto);
-
   }
   public async obtenerPersonasConFotos(){
     return await this.http.get("/personas_con_fotos");
@@ -43,8 +40,8 @@ export class PersonasService {
   public async guardarEdicionPersona(persona:Persona){
     return await this.http.post("/actualizarPersona",persona);
   }
-  public async guardarEdicionFoto(foto:Foto){
+  public async editarFotoDePersonas(fotos:FormData){
+    return await this.http.formdata("/editar_foto_de_persona",fotos);
 
-    return await this.http.post("/actualizarFoto",foto);
   }
 }

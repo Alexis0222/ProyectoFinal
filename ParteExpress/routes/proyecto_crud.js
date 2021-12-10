@@ -15,13 +15,45 @@ app.post('/fotos_persona', (req, res) => {
 
   form.parse(req, async (err, fields, files) => {
     const id_persona = fields.id_persona;
-    console.log(idProducto);
+    console.log(id_persona);
     console.log(fields)
     console.log(files)
     for (let clave in files) {
       const file = files[clave];
       const nombreArchivo = file.name;
-      await productoModel.agregarFoto(id_persona, nombreArchivo)
+      await personaModel.agregarFoto(id_persona, nombreArchivo)
+    }
+  });
+
+  form.on("fileBegin", (name, file) => {
+    const extension = path.extname(file.name);
+    const nuevoNombre = uuidv4().concat(extension);
+    file.path = path.join(DIRECTORIO_FOTOS, nuevoNombre);
+    file.name = nuevoNombre;
+  })
+
+  form.on("end", () => {
+    res.json({
+      respuesta: true,
+    })
+  })
+
+});
+app.post('/editar_foto_de_persona', (req, res) => {
+  const form = formidable({
+    multiples: true,
+    uploadDir: DIRECTORIO_FOTOS,
+  });
+
+  form.parse(req, async (err, fields, files) => {
+    const id_persona = fields.id_persona;
+    console.log(id_persona);
+    console.log(fields)
+    console.log(files)
+    for (let clave in files) {
+      const file = files[clave];
+      const nombreArchivo = file.name;
+      await personaModel.actualizarFoto(id_persona, nombreArchivo)
     }
   });
 
@@ -99,12 +131,8 @@ app.post('/fotos_persona', (req, res) => {
     await personaModel.eliminar(idpersona);
     res.json(true);
   });
-  app.post("/fotopersona",async(req,res)=>{
-    const persona=req.body;
-    
-  const respuesta= await personaModel.agregarFoto(persona.id_persona,persona.foto)
-    res.json(respuesta);
-  });
+ 
+ 
   app.post("/actualizarlikes",async(req,res)=>{
     const persona=req.body;
   const respuesta= await personaModel.actualizarPuntaje(persona.id_persona,persona.likes,persona.dislikes)
